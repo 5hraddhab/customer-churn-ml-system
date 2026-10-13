@@ -119,28 +119,6 @@ Or with explicit virtual environment path:
 
 Open your browser to `http://localhost:8501`.
 
----
 
-## 🧭 Application Walkthrough (8 Pages)
 
-1. **Home:** High-level project summary, system metrics, and architectural workflow.
-2. **Upload Dataset:** Upload custom CSV/Excel files or reload the default dataset. Map churn/retention values and select columns to exclude.
-3. **Data Analysis:** Audit data quality, examine missing values, class distributions, correlation heatmaps, and test feature vs. churn boxplots/bar charts.
-4. **Train Model:** Select numerical scalers (Standard, MinMax, Robust), toggle imbalance weights, train all 3 models, and view the comparison table.
-5. **Predict Churn:**
-   - *Single Prediction:* Enter customer attributes to obtain real-time churn probability, risk tier, top driving factors, and immediate retention actions.
-   - *Batch Scoring:* Score an entire customer table and export enriched predictions with risk levels to CSV.
-6. **Customer Insights:** Filter prioritized high-risk cohorts and analyze attrition distributions across categorical dimensions.
-7. **Model Performance:** Deep dive into each model with interactive Confusion Matrices, full classification reports, and predictive feature importance charts.
-8. **Retention Recommendations:** Select industry sector (Banking, Telecom, E-Commerce, SaaS, General) and use the interactive Scenario Simulator to test operational response playbooks.
 
----
-
-## 🎓 Viva & College Project Defense Highlights
-
-- **Why prioritize Recall over Accuracy for churn?**  
-  In churn prediction, False Negatives (predicting a customer will stay when they actually churn) are far more expensive than False Positives (offering a retention perk to a customer who wasn't planning to leave).
-- **How is data leakage prevented?**  
-  The `DataPreprocessor` class isolates `fit()` to `X_train`. Imputer statistics (e.g. median) and scaler parameters ($\mu, \sigma$) are computed exclusively on training data and subsequently applied to `X_test`.
-- **How is the application generalized?**  
-  No column names (like `Monthly_Spending` or `Streaming_Usage`) are hardcoded into data loading or modeling logic. Categorical features are dynamically one-hot encoded and numerical features are dynamically scaled regardless of the schema.
