@@ -22,7 +22,7 @@ from sklearn.metrics import (
 )
 from sklearn.model_selection import train_test_split
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
 
 from src.data_preprocessing import DataPreprocessor
 
@@ -32,7 +32,7 @@ class ModelTrainer:
     Manages model training, evaluation, comparison, and persistence.
     """
 
-    SUPPORTED_MODELS = ["Logistic Regression", "Decision Tree", "Random Forest"]
+    SUPPORTED_MODELS = ["Logistic Regression", "Decision Tree", "Random Forest", "Gradient Boosting"]
 
     def __init__(
         self,
@@ -72,13 +72,19 @@ class ModelTrainer:
                 random_state=self.random_state,
             ),
             "Random Forest": RandomForestClassifier(
-                n_estimators=100,
-                max_depth=10,
+                n_estimators=150,
+                max_depth=12,
                 min_samples_split=5,
                 min_samples_leaf=2,
                 class_weight=class_weight,
                 random_state=self.random_state,
                 n_jobs=-1,
+            ),
+            "Gradient Boosting": GradientBoostingClassifier(
+                n_estimators=120,
+                learning_rate=0.08,
+                max_depth=4,
+                random_state=self.random_state,
             ),
         }
 

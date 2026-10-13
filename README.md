@@ -59,10 +59,11 @@ Aiml.Project/
 - The validation/test partition (`X_test`) and future inference records are only transformed using the pre-fitted parameters.
 
 ### 3. Model Training & Comparison
-The system trains and benchmarks three complementary classifiers:
-- **Logistic Regression:** Linear decision boundary, serves as a high-interpretability baseline with balanced class weights.
+The system trains and benchmarks four complementary classifiers:
+- **Logistic Regression:** Linear decision boundary with balanced class weights, serves as a high-interpretability baseline.
 - **Decision Tree Classifier:** Non-linear rule-based partitioning with regularized depth to prevent overfitting.
-- **Random Forest Classifier:** Ensemble bagging of decision trees reducing variance and capturing feature interactions.
+- **Random Forest Classifier:** Ensemble bagging of decision trees reducing variance and capturing complex non-linear feature interactions.
+- **Gradient Boosting Classifier:** Sequential boosting minimizing residual errors, achieving high precision and discrimination.
 
 **Evaluation Metrics Computed:**
 - **Accuracy:** Overall correctness.
@@ -73,10 +74,11 @@ The system trains and benchmarks three complementary classifiers:
 - **Confusion Matrix:** True Negatives, False Positives, False Negatives, True Positives.
 
 ### 4. Empirical Evaluation on the Default Dataset (`Data/train.csv`)
-On the provided 8,000-record customer dataset (31.31% churn prevalence, 20% stratified test split):
-- **Decision Tree** achieves the highest **Recall (~74.65%)** and **F1-Score (~0.4400)**, capturing the majority of churners.
-- **Random Forest** achieves the highest overall **Accuracy (~57.31%)**.
-- **Logistic Regression** achieves **~52.00% Accuracy** and **~48.50% Recall**.
+On the 8,000-record customer dataset (31.31% churn prevalence, 20% stratified test split):
+- **Logistic Regression:** **86.75% Accuracy**, **85.83% Recall**, **0.8022 F1-Score**, **0.9440 ROC-AUC**
+- **Gradient Boosting:** **86.31% Accuracy**, **69.26% Recall**, **84.22% Precision**, **0.9360 ROC-AUC**
+- **Random Forest:** **85.38% Accuracy**, **77.64% Recall**, **0.7688 F1-Score**, **0.9301 ROC-AUC**
+- **Decision Tree:** **77.81% Accuracy**, **81.44% Recall**, **0.6968 F1-Score**, **0.8610 ROC-AUC**
 
 *(All metrics are computed on the held-out test split; no values are fabricated).*
 
