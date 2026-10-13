@@ -1,0 +1,19 @@
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+
+# Executables & large binaries
+cloudflared.exe
+*.exe
+
+# OS generated files
+.DS_Store
+Thumbs.db
